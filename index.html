@@ -294,6 +294,28 @@ html{scrollbar-gutter:stable;scrollbar-color:#155b83 #eef4f8;scroll-behavior:smo
     .image-credit { top: 190px; }
     section { scroll-margin-top: 195px; }
   }
+  .site-footer { background: #092c43; color: #d6e6f0; padding-block: clamp(40px, 6vw, 72px) 24px; position: relative; }
+  .site-footer__grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 36px 56px; }
+  .site-footer h2 { color: #fff; font: 600 clamp(24px, 2.4vw, 34px)/1.2 var(--v-font-display); margin: 0 0 20px; }
+  .site-footer h3 { color: #fff; font-size: 18px; font-weight: 600; margin: 0 0 20px; }
+  .site-footer p { font-size: 15px; line-height: 1.65; margin: 0; max-width: 44ch; }
+  .site-footer__demo { display: inline-block; color: #a8d9f4; font-size: 13px; margin-top: 18px; border: 1px solid #46677e; border-radius: 4px; padding: 5px 10px; }
+  .site-footer__contacts { display: grid; gap: 15px; margin: 0; font-size: 15px; }
+  .site-footer__contacts dt { color: #a8d9f4; font-size: 13px; margin-bottom: 3px; }
+  .site-footer__contacts dd { margin: 0; }
+  .site-footer a { color: #d6e6f0; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+  .site-footer a:hover { color: #fff; }
+  .site-footer :focus-visible { outline-color: #a8d9f4; }
+  .site-footer__nav a { display: block; width: fit-content; padding-block: 8px; font-size: 15px; }
+  .site-footer__documents { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 32px; border-top: 1px solid #36566c; margin-top: 40px; padding-top: 20px; align-items: start; }
+  .site-footer summary { cursor: pointer; padding-block: 12px; color: #d6e6f0; font-size: 14px; line-height: 1.5; }
+  .site-footer details p { font-size: 14px; padding-block: 4px 16px; }
+  .site-footer__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 28px; margin-top: 28px; border-top: 1px solid #36566c; padding-top: 24px; align-items: center; }
+  .site-footer__bottom p, .site-footer__bottom a { font-size: 13px; }
+  .site-footer__bottom p { max-width: none; }
+  .site-footer__bottom a { padding-block: 10px; }
+  @media (max-width: 860px) { .site-footer__grid { grid-template-columns: 1fr 1fr; gap: 32px; } .site-footer__intro { grid-column: 1 / -1; } .site-footer__documents { grid-template-columns: 1fr; gap: 0; } }
+  @media (max-width: 480px) { .site-footer__grid { grid-template-columns: 1fr; } .site-footer__intro { grid-column: auto; } .site-footer__bottom { align-items: start; flex-direction: column; } }
 </style>
 </head>
 <body>
@@ -580,20 +602,61 @@ html{scrollbar-gutter:stable;scrollbar-color:#155b83 #eef4f8;scroll-behavior:smo
           <div class="fin__meta" data-v-cue="0.1">
             <p class="fin__tel">Учебное демо</p>
             
-            <span><b>Выездная уборка</b>, учебном городе</span>
+            <span><b>Выездная уборка</b> в Геленджике</span>
             <span>Пример графика: ежедневно 09:00-19:00</span>
             <span>Контакты реальной компании пока не добавлены</span>
           </div>
         </div>
-        <footer class="foot">
-          <span>По пунктам · учебном городе</span>
-          <span>Вымышленная компания · заявки не отправляются</span>
-          <span class="foot__more">Поддерживающая, генеральная уборка квартир и уборка после ремонта</span>
-        </footer>
       </div>
     </section>
 
   </main>
+  <footer class="site-footer" id="contacts" aria-labelledby="footer-title">
+    <div class="v-wrap">
+      <div class="site-footer__grid">
+        <div class="site-footer__intro">
+          <h2 id="footer-title">Уборка квартир<br>в Геленджике</h2>
+          <p>Поддерживающая и генеральная уборка, уборка после ремонта. Состав работ - по согласованному списку.</p>
+          <span class="site-footer__demo">Учебный демо-сайт</span>
+        </div>
+        <div>
+          <h3>Связаться с нами</h3>
+          <dl class="site-footer__contacts">
+            <div><dt>Телефон</dt><dd>Номер будет добавлен</dd></div>
+            <div><dt>Электронная почта</dt><dd>Адрес будет добавлен</dd></div>
+            <div><dt>Режим работы</dt><dd>График будет уточнён</dd></div>
+            <div><dt>Зона выезда</dt><dd>Геленджик</dd></div>
+          </dl>
+        </div>
+        <nav class="site-footer__nav" aria-label="Навигация в подвале">
+          <h3>Об уборке</h3>
+          <a href="#akt">Что входит в уборку</a>
+          <a href="#brigada">Кто приедет к вам домой</a>
+          <a href="#ceny">Виды уборки и цены</a>
+          <a href="#demo-calc">Рассчитать стоимость</a>
+        </nav>
+      </div>
+      <div class="site-footer__documents" aria-label="Информация о компании и документы">
+        <details>
+          <summary>Реквизиты компании</summary>
+          <p>Место для данных исполнителя: название организации или ФИО, ИНН, ОГРН / ОГРНИП при наличии, адрес и контакты. Данные добавляются после выбора реальной компании.</p>
+        </details>
+        <details>
+          <summary>Политика конфиденциальности</summary>
+          <p>Здесь будет документ реальной компании с описанием обработки и защиты персональных данных. Сейчас это заглушка, а не действующая политика. Учебный калькулятор не отправляет введённые значения.</p>
+        </details>
+        <details>
+          <summary>Условия заказа и оплаты</summary>
+          <p>Здесь будут согласованные условия заказа, оплаты, переноса и отмены уборки. На демо-сайте нельзя оформить заказ или внести оплату.</p>
+        </details>
+      </div>
+      <div class="site-footer__bottom">
+        <p>© 2026 · Уборка квартир в Геленджике</p>
+        <p>Компания и цены вымышлены. Заявки не отправляются.</p>
+        <a href="#hero">Наверх ↑</a>
+      </div>
+    </div>
+  </footer>
 </div>
 
 <script src="vibe.js"></script>
