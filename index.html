@@ -4,411 +4,49 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>По пунктам · уборка квартир в Геленджике</title>
-<meta name="description" content="Уборка квартир в учебном городе: что входит - списком по комнатам, цена по метражу известна до приезда, приезжаем к своему времени со своей химией, приёмка по акту.">
+<title>Уборка квартир в Геленджике - услуги и расчёт стоимости</title>
+<meta name="description" content="Учебный демо-сайт уборки квартир в Геленджике: виды уборки, предварительный расчёт, список работ по комнатам и подготовка бригады.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
-<meta property="og:site_name" content="По пунктам">
-<meta property="og:title" content="По пунктам · уборка квартир по акту">
+<meta property="og:site_name" content="Уборка квартир в Геленджике">
+<meta property="og:title" content="Уборка квартир в Геленджике · уборка квартир по акту">
 <meta property="og:description" content="Что входит в уборку - списком, по комнатам: 36 пунктов, по ним же принимаете работу. Цена по метражу до приезда. Поддерживающая, генеральная, после ремонта.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%273%27 y=%273%27 width=%2726%27 height=%2726%27 rx=%276%27 fill=%27%2372bee8%27/%3E%3Cpath d=%27M9 16.5l5 5 9-10%27 fill=%27none%27 stroke=%27%23092c43%27 stroke-width=%273.2%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E">
-<link rel="stylesheet" href="vibe.css">
+
 
 <style>
-  html, body { margin: 0; background: #eef4f8; }
-
-  /* ---- тема: шесть цветов, два шрифта ------------------------------------ */
-  .v-page {
-    --v-canvas: #eef4f8; --v-surface: #ffffff;
-    --v-ink: #142b3a; --v-ink-soft: #506777;           /* 5,2:1 на холсте */
-    --v-accent: #72bee8; --v-accent-ink: #092c43;      /* кнопка 8,1:1 */
-    --v-accent-deep: #155b83;                          /* мелкий акцентный текст, 5,7:1 */
-    --v-font-display: "Rubik", "Segoe UI", system-ui, sans-serif;
-    --v-font-text: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
-    --v-shadow-color: 20 43 58;
-    --v-e1: 0 1px 2px rgb(var(--v-shadow-color) / .08), 0 8px 22px rgb(var(--v-shadow-color) / .10);
-    --v-e2: 0 2px 6px rgb(var(--v-shadow-color) / .10), 0 22px 54px rgb(var(--v-shadow-color) / .16);
-    --v-radius: 6px;
-    --v-track-tight: -0.02em;
-    /* мелкие кегли не ниже 13 и 15 px */
-    --v-t-xs: clamp(0.8125rem, 0.79rem + 0.15vw, 0.85rem);
-    --v-t-sm: clamp(0.9375rem, 0.9rem + 0.2vw, 1rem);
-  }
-  @media (max-width: 860px) { .v-page { --v-t-xs: 0.9375rem; } }  /* на телефоне мелкий кегль не ниже 15 px */
-  .v-page .v-display { font-weight: 600; }
-  .v-page .v-btn { font-size: var(--v-t-base); }
-  .v-page .v-lede { color: var(--v-ink); }
-  .nowrap { white-space: nowrap; }
-
-  /* ---- галочка: одна форма на всю страницу (ячейки акта, марка, штамп) ---- */
-  .tick { position: relative; display: inline-block; width: 1.75rem; height: 1.75rem; border-radius: 4px; flex: none; }
-  .tick::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: var(--v-accent); }
-  .tick::after { content: ""; position: absolute; left: 36%; top: 18%; width: 22%; height: 46%; border: solid var(--v-accent-ink); border-width: 0 2px 2px 0; transform: rotate(45deg); }
-
-  /* ---- шапка: марка, счётчик акта (фирменный ход), одна кнопка ------------- */
-  .bar { position: fixed; inset: 0 0 auto 0; z-index: 30; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: var(--v-6);
-    padding: var(--v-3) var(--v-gutter); background: rgb(238 244 248 / .86); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid var(--v-hair); }
-  .bar__mark { font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-base); text-decoration: none; display: inline-flex; align-items: center; gap: .5em; white-space: nowrap; }
-  .bar__mark .tick { width: 1.1rem; height: 1.1rem; border-radius: 3px; }
-  .bar__act { display: flex; align-items: center; gap: var(--v-3); justify-self: center; width: min(100%, 30rem); font-size: var(--v-t-sm); color: var(--v-ink-soft); }
-  .bar__count { font-family: var(--v-font-display); font-weight: 500; color: var(--v-ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .bar__line { flex: 1; height: 2px; border-radius: 1px; background: var(--v-hair-strong); position: relative; overflow: hidden; }
-  .bar__line b { position: absolute; inset: 0; background: var(--v-accent); transform-origin: left; transform: scaleX(var(--n, 0)); transition: transform .25s var(--v-ease-out); }
-  .bar__done { display: none; color: var(--v-accent-deep); font-weight: 600; white-space: nowrap; }
-  .bar.is-done .bar__done { display: inline; }
-  .bar .v-btn { padding: .75em 1.3em; }
-  @media (max-width: 860px) {
-    .bar { gap: var(--v-3); }
-    .bar__label { display: none; }
-    .bar__act { width: auto; justify-self: stretch; }
-    .bar .v-btn { padding: .65em 1em; font-size: var(--v-t-sm); }
-  }
-  @media (max-width: 600px) {
-    .bar__mark span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-    .bar__mark .tick { width: 1.4rem; height: 1.4rem; }
-    .bar__done { display: none !important; }
-  }
-
-  /* ---- 1 · hero: кухня после уборки на весь экран, оффер внизу слева -------- */
-  .hero__img picture, .hero__img img { display: block; width: 100%; height: 100%; object-fit: cover; }
-  /* скрим светлый, углом: текст ложится на пустую стену и пол, заложенные в промпте */
-  .hero__scrim { background: radial-gradient(130% 100% at 0% 100%, rgb(238 244 248 / .94) 0%, rgb(238 244 248 / .8) 34%, rgb(238 244 248 / .35) 60%, transparent 78%); }
-  .hero__copy, .hero__turn { max-width: min(44rem, 58vw); }
-  .hero__label { font-size: var(--v-t-sm); font-weight: 500; color: var(--v-accent-deep); margin-bottom: var(--v-4); }
-  .hero__copy h1 { font-size: clamp(2.4rem, 1.2rem + 3.4vw, 5rem); line-height: .98; }
-  .hero__copy .v-lede { margin-top: var(--v-5); max-width: 40ch; }
-  .hero__cta { margin-top: var(--v-6); display: flex; flex-wrap: wrap; align-items: center; gap: var(--v-4) var(--v-6); }
-  .hero__hint { font-size: var(--v-t-sm); color: var(--v-ink-soft); max-width: 30ch; }
-  .hero__turn .v-lede { margin-top: var(--v-4); max-width: 44ch; }
-  @media (max-width: 860px) {
-    .hero__scrim { background: linear-gradient(to top, rgb(238 244 248 / .97) 0%, rgb(238 244 248 / .92) 38%, rgb(238 244 248 / .55) 62%, transparent 82%); }
-    .hero__copy, .hero__turn { max-width: none; }
-    .hero__copy h1 { font-size: clamp(1.8rem, 1.2rem + 2.8vw, 2.4rem); line-height: 1.04; }
-    .hero__copy .v-lede, .hero__turn .v-lede { font-size: var(--v-t-base); margin-top: var(--v-4); }
-    .hero__cta { margin-top: var(--v-5); flex-direction: column; align-items: flex-start; gap: var(--v-3); }
-    .hero__label { margin-bottom: var(--v-3); }
-  }
-
-  /* ---- 2 · «всё» - это не список ------------------------------------------- */
-  .vsyo__grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: var(--v-6) var(--v-9); align-items: start; }
-  .vsyo__big { font-family: var(--v-font-display); font-weight: 600; font-size: clamp(6rem, 17vw, 15rem); line-height: .85; letter-spacing: -.05em;
-    color: color-mix(in oklab, var(--v-ink) 10%, transparent); user-select: none; }
-  .vsyo__big s { text-decoration-color: var(--v-accent); text-decoration-thickness: .06em; }
-  .vsyo__copy { display: flex; flex-direction: column; gap: var(--v-5); }
-  .vsyo__copy .v-body { color: var(--v-ink-soft); }
-  .lines li { display: grid; gap: var(--v-1); padding: var(--v-4) 0; border-top: 1px solid var(--v-hair); }
-  .lines li:last-child { border-bottom: 1px solid var(--v-hair); }
-  .lines b { font-weight: 600; }
-  .lines span { color: var(--v-ink-soft); font-size: var(--v-t-sm); }
-  @media (max-width: 860px) {
-    .vsyo__grid { grid-template-columns: 1fr; gap: var(--v-4); }
-    .vsyo__big { font-size: clamp(5rem, 30vw, 8rem); }
-  }
-
-  /* ---- 3 · акт приёмки: четыре зоны, у каждой фото и таблица П / Г / Р ------ */
-  .akt__head { max-width: 62rem; display: flex; flex-direction: column; gap: var(--v-5); margin-bottom: var(--v-7); }
-  .akt__head .v-body { color: var(--v-ink-soft); }
-  .akt__head .v-body b { color: var(--v-ink); font-weight: 600; }
-  .legend { display: flex; flex-wrap: wrap; gap: var(--v-3) var(--v-6); font-size: var(--v-t-sm); color: var(--v-ink-soft); }
-  .legend li { display: inline-flex; align-items: center; gap: var(--v-2); }
-  .legend b, .chk__cols b, .rows__col { display: inline-grid; place-items: center; width: 1.75rem; height: 1.75rem; border: 1px solid var(--v-hair-strong); border-radius: 4px;
-    font-family: var(--v-font-display); font-weight: 500; font-size: var(--v-t-sm); color: var(--v-ink); flex: none; }
-  .zone { display: grid; grid-template-columns: minmax(0, 19rem) minmax(0, 1fr); gap: var(--v-6) var(--v-9); padding: var(--v-7) 0 var(--v-8); border-top: 1px solid var(--v-hair-strong); }
-  .zone__head { grid-column: 1 / -1; display: flex; align-items: baseline; gap: var(--v-4); }
-  .zone__num { font-family: var(--v-font-display); font-weight: 500; color: var(--v-accent-deep); font-size: var(--v-t-lg); font-variant-numeric: tabular-nums; }
-  .zone__count { margin-left: auto; color: var(--v-ink-soft); font-size: var(--v-t-sm); white-space: nowrap; }
-  .zone__fig { position: sticky; top: 5.5rem; border-radius: var(--v-radius); overflow: hidden; box-shadow: var(--v-e1); background: var(--v-surface); }
-  .zone__fig img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
-  .zone__fig figcaption { padding: var(--v-3) var(--v-4) var(--v-4); font-size: var(--v-t-sm); color: var(--v-ink-soft); text-wrap: pretty; }
-  .chk { display: flex; flex-direction: column; }
-  .chk__cols { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--v-5); align-items: end; padding-bottom: var(--v-2); font-size: var(--v-t-xs); color: var(--v-ink-soft); letter-spacing: var(--v-track-wide); text-transform: uppercase; }
-  .chk__cols span:last-child { display: grid; grid-template-columns: repeat(3, 1.75rem); gap: var(--v-2); }
-  .chk__row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--v-5); align-items: center; padding: var(--v-3) 0; border-top: 1px solid var(--v-hair); }
-  .chk__row:last-child { border-bottom: 1px solid var(--v-hair); }
-  .chk__text { display: flex; gap: var(--v-3); align-items: baseline; }
-  .chk__n { color: var(--v-ink-soft); font-size: var(--v-t-xs); font-variant-numeric: tabular-nums; min-width: 1.6em; }
-  .chk__text small { display: block; color: var(--v-ink-soft); font-size: var(--v-t-sm); }
-  .chk__cells { display: grid; grid-template-columns: repeat(3, 1.75rem); gap: var(--v-2); }
-  .chk__cells i { position: relative; display: block; width: 1.75rem; height: 1.75rem; border-radius: 4px; border: 1px solid var(--v-hair-strong); background: var(--v-surface); }
-  .chk__cells i.n { border-color: var(--v-hair); background: transparent; }
-  .chk__cells i.n::after { content: ""; position: absolute; left: .5rem; right: .5rem; top: 50%; height: 1px; background: var(--v-hair-strong); }
-  /* галочка проставляется от --v-p зоны (класс is-on пишет свой JS): заливка мятой .6 → 1, потом штрих */
-  .chk__cells i.y::before { content: ""; position: absolute; inset: -1px; border-radius: 4px; background: var(--v-accent); opacity: 0; transform: scale(.6);
-    transition: opacity .26s var(--v-ease-out), transform .26s var(--v-ease-out); }
-  .chk__cells i.y::after { content: ""; position: absolute; left: 36%; top: 16%; width: 22%; height: 46%; border: solid var(--v-accent-ink); border-width: 0 2px 2px 0;
-    transform: rotate(45deg) scale(.4); opacity: 0; transition: opacity .2s var(--v-ease-out) .08s, transform .2s var(--v-ease-out) .08s; }
-  .chk__cells i.y:nth-child(2)::before, .chk__cells i.y:nth-child(2)::after { transition-delay: .06s, .06s; }
-  .chk__cells i.y:nth-child(3)::before, .chk__cells i.y:nth-child(3)::after { transition-delay: .12s, .12s; }
-  .chk__cells i.y:nth-child(2)::after { transition-delay: .14s; }
-  .chk__cells i.y:nth-child(3)::after { transition-delay: .2s; }
-  .chk__row.is-on i.y::before { opacity: 1; transform: none; }
-  .chk__row.is-on i.y::after { opacity: 1; transform: rotate(45deg) scale(1); }
-  @media (max-width: 860px) {
-    .zone { grid-template-columns: 1fr; gap: var(--v-5); padding: var(--v-6) 0 var(--v-7); }
-    .zone__fig { position: static; }
-    .zone__fig img { aspect-ratio: 4 / 3; }
-    .chk__row, .chk__cols { gap: var(--v-4); }
-    .legend b, .chk__cols b, .rows__col, .chk__cells i, .chk__cells, .chk__cols span:last-child { --c: 1.6rem; }
-    .chk__cells, .chk__cols span:last-child { grid-template-columns: repeat(3, var(--c)); gap: var(--v-1); }
-    .chk__cells i, .chk__cols b, .legend b { width: var(--c); height: var(--c); }
-    .chk__text { font-size: var(--v-t-sm); }
-  }
-
-  /* ---- 4 · как проходит: фото на весь экран, четыре реплики-шага ------------ */
-  .kak__scrim { background: radial-gradient(120% 100% at 0% 100%, rgb(238 244 248 / .95) 0%, rgb(238 244 248 / .82) 36%, rgb(238 244 248 / .35) 62%, transparent 80%); }
-  .kak__title { position: absolute; z-index: 3; top: calc(4.6rem + var(--v-4)); left: var(--v-gutter); font-size: var(--v-t-xs); letter-spacing: var(--v-track-wide); text-transform: uppercase; color: var(--v-ink-soft); }
-  .kak__step { max-width: min(40rem, 50vw); }
-  .kak__n { display: block; font-family: var(--v-font-display); font-weight: 500; color: var(--v-accent-deep); font-size: var(--v-t-sm); font-variant-numeric: tabular-nums; margin-bottom: var(--v-3); }
-  .kak__step .v-lede { margin-top: var(--v-4); max-width: 40ch; }
-  /* указатель шагов: плотность от --v-p акта, чистый CSS */
-  .kak__index { position: absolute; z-index: 3; right: var(--v-gutter); bottom: clamp(3rem, 12vh, 9rem); display: flex; flex-direction: column; gap: var(--v-2); text-align: right; font-size: var(--v-t-sm); font-variant-numeric: tabular-nums; }
-  .kak__index span { color: var(--v-ink); opacity: calc(.32 + .68 * clamp(0, (var(--v-p, 0) - var(--lo)) * 25, 1) * clamp(0, (var(--hi) - var(--v-p, 0)) * 25, 1)); }
-  .kak__index span:nth-child(1) { --lo: -1; --hi: .28; }
-  .kak__index span:nth-child(2) { --lo: .28; --hi: .54; }
-  .kak__index span:nth-child(3) { --lo: .54; --hi: .78; }
-  .kak__index span:nth-child(4) { --lo: .78; --hi: 2; }
-  @media (max-width: 860px) {
-    .kak__scrim { background: linear-gradient(to top, rgb(238 244 248 / .97) 0%, rgb(238 244 248 / .92) 40%, rgb(238 244 248 / .5) 64%, transparent 84%); }
-    .kak__step { max-width: none; }
-    .kak__step .v-lede { font-size: var(--v-t-base); }
-    .kak__index { display: none; }
-  }
-
-  /* ---- 5 · виды уборки и цена по метражу ------------------------------------ */
-  .ceny__grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: var(--v-8) var(--v-9); align-items: start; }
-  .ceny__head { display: flex; flex-direction: column; gap: var(--v-5); align-items: flex-start; }
-  .ceny__head .v-body { color: var(--v-ink-soft); max-width: 44ch; }
-  .example { width: 100%; max-width: 30rem; padding: var(--v-5); border-radius: var(--v-radius); background: var(--v-surface); box-shadow: var(--v-e1), var(--v-edge); display: flex; flex-direction: column; gap: var(--v-2); }
-  .example__title { font-size: var(--v-t-xs); letter-spacing: var(--v-track-wide); text-transform: uppercase; color: var(--v-ink-soft); font-weight: 500; }
-  .example__text { font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-lg); line-height: 1.3; text-wrap: pretty; }
-  .example__note { font-size: var(--v-t-sm); color: var(--v-ink-soft); }
-  .rows--ceny li { display: grid; grid-template-columns: 1.75rem minmax(0, 1fr) auto; gap: var(--v-1) var(--v-4); padding: var(--v-5) 0; border-top: 1px solid var(--v-hair); align-items: baseline; }
-  .rows--ceny li:last-child { border-bottom: 1px solid var(--v-hair); }
-  .rows--ceny .rows__col { grid-row: 1 / span 3; align-self: start; }
-  .rows--ceny h3 { grid-column: 2; font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-lg); letter-spacing: var(--v-track-normal); line-height: 1.15; }
-  .rows--ceny p { grid-column: 2; color: var(--v-ink-soft); font-size: var(--v-t-sm); max-width: 44ch; }
-  .rows--ceny .price { grid-column: 3; grid-row: 1; font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-lg); white-space: nowrap; text-align: right; }
-  .rows--ceny .min { grid-column: 3; grid-row: 2; font-size: var(--v-t-sm); color: var(--v-ink-soft); white-space: nowrap; text-align: right; }
-  @media (max-width: 860px) {
-    .ceny__grid { grid-template-columns: 1fr; gap: var(--v-7); }
-    .rows--ceny li { grid-template-columns: 1.6rem minmax(0, 1fr); }
-    .rows--ceny .price, .rows--ceny .min { grid-column: 2; grid-row: auto; text-align: left; }
-    .rows--ceny .price { font-size: var(--v-t-base); margin-top: var(--v-1); }
-  }
-
-  /* ---- 6 · кто приезжает и чем моем + отзывы с Яндекс.Карт (слоты) ----------- */
-  .kto__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--v-8) var(--v-9); align-items: center; }
-  .kto__fig { border-radius: var(--v-radius); overflow: hidden; box-shadow: var(--v-e2); background: var(--v-surface); }
-  .kto__fig img { width: 100%; aspect-ratio: 16 / 11; object-fit: cover; }
-  .kto__fig figcaption { padding: var(--v-3) var(--v-4) var(--v-4); font-size: var(--v-t-sm); color: var(--v-ink-soft); text-wrap: pretty; }
-  .kto__fig figcaption b { color: var(--v-ink); font-weight: 500; }
-  .facts { margin-top: var(--v-6); }
-  .facts li { padding: var(--v-4) 0; border-top: 1px solid var(--v-hair); display: grid; gap: var(--v-1); }
-  .facts li:last-child { border-bottom: 1px solid var(--v-hair); }
-  .facts b { font-weight: 600; }
-  .facts span { color: var(--v-ink-soft); font-size: var(--v-t-sm); text-wrap: pretty; }
-  @media (max-width: 860px) { .kto__grid { grid-template-columns: 1fr; gap: var(--v-6); } }
-
-  @property --r { syntax: "<number>"; inherits: false; initial-value: 0; }
-  .reviews { margin-top: var(--v-10); }
-  .reviews__head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--v-6) var(--v-8); align-items: end; margin-bottom: var(--v-7); }
-  .reviews__rating { display: grid; grid-template-columns: auto auto; gap: var(--v-1) var(--v-4); align-items: center; font-size: var(--v-t-sm); color: var(--v-ink-soft); }
-  .reviews__num { grid-row: 1 / span 2; font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-xl); line-height: 1; color: var(--v-ink); }
-  .reviews__rating a { color: var(--v-ink); }
-  /* звёзды без картинок: пять фигур, заливка по --r (0..5) */
-  .reviews__stars { --size: 1.1rem; display: inline-block; width: calc(var(--size) * 5); height: var(--size);
-    background: linear-gradient(90deg, var(--v-accent) calc(var(--r, 0) / 5 * 100%), var(--v-hair-strong) 0);
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 1.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6L10 15l-5.4 3 1.2-6L1.3 7.8l6.1-.7z'/%3E%3C/svg%3E") 0 0 / var(--size) var(--size) repeat-x;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 1.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6L10 15l-5.4 3 1.2-6L1.3 7.8l6.1-.7z'/%3E%3C/svg%3E") 0 0 / var(--size) var(--size) repeat-x; }
-  .reviews__stars--sm { --size: .8rem; vertical-align: middle; }
-  .reviews__list { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: var(--v-6); align-items: start; }
-  .reviews__item { padding-top: var(--v-5); border-top: 1px solid var(--v-hair); }
-  .reviews__item--big .reviews__text { font-size: var(--v-t-lg); line-height: 1.4; }
-  .reviews__text { text-wrap: pretty; }
-  .reviews__meta { margin-top: var(--v-4); font-size: var(--v-t-sm); color: var(--v-ink-soft); }
-  .reviews__meta b { color: var(--v-ink); font-weight: 600; }
-  @media (max-width: 860px) { .reviews { margin-top: var(--v-9); } .reviews__list { grid-template-columns: 1fr; } .reviews__head { grid-template-columns: 1fr; align-items: start; margin-bottom: var(--v-6); } }
-
-  /* ---- 7 · финал: акт принят, расчёт --------------------------------------- */
-  .fin__inner { height: 100%; width: min(100% - 2 * var(--v-gutter), 76rem); margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: var(--v-8); align-items: end;
-    padding: 6rem 0 clamp(5.5rem, 15vh, 8.5rem); }
-  .fin__stamp { display: inline-flex; align-items: center; gap: .6em; padding: .4em .95em .4em .45em; border: 1px solid var(--v-hair-strong); border-radius: 999px; font-size: var(--v-t-sm); color: var(--v-ink-soft); margin-bottom: var(--v-6); background: var(--v-surface); }
-  .fin__stamp .tick { width: 1.4rem; height: 1.4rem; }
-  .fin__stamp b { color: var(--v-ink); font-weight: 600; font-variant-numeric: tabular-nums; }
-  .fin__copy h2 { font-size: clamp(2.2rem, 1.2rem + 3vw, 4.4rem); line-height: 1; }
-  .fin__copy .v-lede { margin-top: var(--v-5); max-width: 40ch; }
-  .fin__copy .v-btn { margin-top: var(--v-6); }
-  .fin__meta { display: grid; gap: var(--v-2); font-size: var(--v-t-sm); color: var(--v-ink-soft); }
-  .fin__tel { justify-self: start; display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-xl); color: var(--v-ink); }
-  .fin__msg { display: flex; flex-wrap: wrap; gap: var(--v-4); }
-  .fin__msg a { display: inline-flex; align-items: center; min-height: 44px; color: var(--v-ink); font-weight: 500; }
-  .fin__meta b { color: var(--v-ink); font-weight: 500; }
-  .foot { position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; padding: var(--v-4) var(--v-gutter); display: flex; justify-content: space-between; gap: var(--v-2) var(--v-4); flex-wrap: wrap;
-    border-top: 1px solid var(--v-hair); font-size: var(--v-t-xs); color: var(--v-ink-soft); }
-  @media (max-width: 860px) {
-    .fin__inner { grid-template-columns: 1fr; gap: var(--v-5); align-content: end; padding: 5rem 0 5.5rem; }
-    .fin__stamp { margin-bottom: var(--v-4); }
-    .fin__copy h2 { font-size: clamp(1.7rem, 1.2rem + 2.6vw, 2.2rem); line-height: 1.04; }
-    .fin__copy .v-lede { font-size: var(--v-t-base); margin-top: var(--v-3); }
-    .fin__copy .v-btn { margin-top: var(--v-4); }
-    .fin__tel { font-size: var(--v-t-lg); min-height: 40px; }
-    .fin__meta { gap: var(--v-1); }
-    .fin__msg a { min-height: 40px; }
-    .foot { padding: var(--v-3) var(--v-gutter); }
-    .foot__more { display: none; }
-  }
-
-html{scrollbar-gutter:stable;scrollbar-color:#155b83 #eef4f8;scroll-behavior:smooth}a,button,select{cursor:pointer}:focus-visible{outline:3px solid #155b83;outline-offset:5px}section{scroll-margin-top:90px}.demo-note{color:#155b83;font-weight:600;margin-bottom:24px}.calc{display:grid;grid-template-columns:1fr 1fr;gap:64px}.calc__fields{display:grid;gap:12px}.calc input,.calc select{font:inherit;padding:14px;background:#fff;border:1px solid #819baa;border-radius:6px;width:100%;box-sizing:border-box}.calc output{font-size:2rem;font-weight:600;margin-top:12px}.error{color:#973d25;min-height:1.5em}.calc__fields>p{font-size:15px;line-height:1.6}.hero__copy{max-width:46rem}.hero__copy h1{font-size:clamp(2.4rem,4.8vw,4.5rem)}.fin__stamp{font-size:14px}.chk__cells i.y{position:relative}.bar__act{pointer-events:none}@media(max-width:860px){.calc{grid-template-columns:1fr;gap:32px}.hero__copy h1{font-size:2.25rem}.hero__copy{padding-bottom:30px}.bar .v-btn{font-size:14px}.zone__head{flex-wrap:wrap}.zone__count{margin-left:0}.fin__inner{padding-bottom:8rem}.foot{font-size:12px}.hero__label{max-width:28ch}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
-  .section-nav { grid-column: 1 / -1; display: flex; justify-content: center; align-items: center; gap: clamp(12px, 3vw, 40px); border-top: 1px solid var(--v-hair); padding-top: 8px; }
-  .section-nav a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; color: var(--v-ink); font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 6px; padding: 0 8px; transition: background-color .16s ease-out, color .16s ease-out; }
-  .section-nav a:active { background: var(--v-accent); color: var(--v-accent-ink); }
-  .bar { row-gap: 8px; }
-  section { scroll-margin-top: 155px; }
-  .zone__fig { top: 155px; }
-  .kak__title { top: 155px; }
-  @media (hover: hover) and (pointer: fine) { .section-nav a:hover { background: var(--v-accent); color: var(--v-accent-ink); } }
-  @media (max-width: 600px) { .section-nav { gap: 0; justify-content: space-between; } .section-nav a { font-size: 13px; padding: 0 5px; } .bar { padding-bottom: 6px; } section { scroll-margin-top: 145px; } }
-.comparison::before,.comparison::after{position:absolute;top:14px;z-index:4;background:#eef4f8;color:#142b3a;padding:7px 12px;border-radius:6px;font:600 14px/1.2 "Segoe UI",sans-serif;box-shadow:0 2px 8px #142b3a22;pointer-events:none}.comparison::before{content:"Было";left:12px}.comparison::after{content:"Стало";right:12px}.ai-caption{display:block;font-weight:600;color:var(--v-accent-deep);margin-bottom:10px}.image-credit{position:absolute;z-index:4;right:var(--v-gutter);top:160px;padding:7px 12px;border-radius:6px;background:#eef4f8e8;color:#142b3a;font-size:13px;max-width:32ch}.calc h2{margin-bottom:20px}@media(max-width:600px){.image-credit{top:140px;max-width:25ch;font-size:12px}.zone__fig img{aspect-ratio:3/4}.hero__img img{object-position:65% center}}
-@media(max-width:860px){.zone__fig.comparison{position:relative}}
-  .brigada { background: var(--v-surface); }
-  .brigada__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(28px, 5vw, 80px); }
-  .brigada__photo { margin: 0; min-width: 0; }
-  .brigada__photo img { display: block; width: 100%; height: auto; aspect-ratio: 1; border-radius: var(--v-radius); }
-  .brigada__photo figcaption { margin-top: 12px; color: var(--v-ink-soft); font-size: var(--v-t-sm); }
-  .brigada__copy { min-width: 0; }
-  .brigada__copy h2 { margin-bottom: 24px; }
-  .brigada__copy p { color: var(--v-ink-soft); margin-bottom: 18px; max-width: 48ch; }
-  .brigada__copy .v-btn { margin-top: 10px; }
-  @media (max-width: 860px) { .brigada__grid { grid-template-columns: 1fr; } .brigada__photo { max-width: 560px; } }
-  .bar__mark .tick { flex-shrink: 0; }
-  .bar__label { white-space: nowrap; }
-  @media (max-width: 1100px) {
-    .bar { grid-template-columns: minmax(0, 1fr) auto; gap: 8px 16px; }
-    .bar__mark { grid-column: 1 / -1; white-space: normal; font-size: 16px; }
-    .bar__mark span { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
-    .bar__act { grid-column: 1; width: 100%; min-width: 0; justify-self: stretch; gap: 6px; }
-    .bar__label { display: inline; white-space: normal; font-size: 13px; }
-    .bar > .v-btn { grid-column: 2; font-size: 13px; padding: .65em .8em; }
-    .bar__count { font-size: 13px; }
-    .image-credit { top: 190px; }
-    section { scroll-margin-top: 195px; }
-  }
-  .site-footer { background: #092c43; color: #d6e6f0; padding-block: clamp(40px, 6vw, 72px) 24px; position: relative; }
-  .site-footer__grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 36px 56px; }
-  .site-footer h2 { color: #fff; font: 600 clamp(24px, 2.4vw, 34px)/1.2 var(--v-font-display); margin: 0 0 20px; }
-  .site-footer h3 { color: #fff; font-size: 18px; font-weight: 600; margin: 0 0 20px; }
-  .site-footer p { font-size: 15px; line-height: 1.65; margin: 0; max-width: 44ch; }
-  .site-footer__demo { display: inline-block; color: #a8d9f4; font-size: 13px; margin-top: 18px; border: 1px solid #46677e; border-radius: 4px; padding: 5px 10px; }
-  .site-footer__contacts { display: grid; gap: 15px; margin: 0; font-size: 15px; }
-  .site-footer__contacts dt { color: #a8d9f4; font-size: 13px; margin-bottom: 3px; }
-  .site-footer__contacts dd { margin: 0; }
-  .site-footer a { color: #d6e6f0; text-decoration-thickness: 1px; text-underline-offset: 4px; }
-  .site-footer a:hover { color: #fff; }
-  .site-footer :focus-visible { outline-color: #a8d9f4; }
-  .site-footer__nav a { display: block; width: fit-content; padding-block: 8px; font-size: 15px; }
-  .site-footer__documents { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 32px; border-top: 1px solid #36566c; margin-top: 40px; padding-top: 20px; align-items: start; }
-  .site-footer summary { cursor: pointer; padding-block: 12px; color: #d6e6f0; font-size: 14px; line-height: 1.5; }
-  .site-footer details p { font-size: 14px; padding-block: 4px 16px; }
-  .site-footer__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 28px; margin-top: 28px; border-top: 1px solid #36566c; padding-top: 24px; align-items: center; }
-  .site-footer__bottom p, .site-footer__bottom a { font-size: 13px; }
-  .site-footer__bottom p { max-width: none; }
-  .site-footer__bottom a { padding-block: 10px; }
-  @media (max-width: 860px) { .site-footer__grid { grid-template-columns: 1fr 1fr; gap: 32px; } .site-footer__intro { grid-column: 1 / -1; } .site-footer__documents { grid-template-columns: 1fr; gap: 0; } }
-  @media (max-width: 480px) { .site-footer__grid { grid-template-columns: 1fr; } .site-footer__intro { grid-column: auto; } .site-footer__bottom { align-items: start; flex-direction: column; } }
+:root { --ink:#142b3a; --muted:#506777; --canvas:#eef4f8; --surface:#fff; --accent:#72bee8; --deep:#155b83; --line:#cbd9e2; --radius:8px; }
+*{box-sizing:border-box} html{scroll-behavior:smooth;scrollbar-gutter:stable;scroll-padding-top:110px} body{margin:0;color:var(--ink);background:var(--canvas);font:17px/1.65 "Segoe UI",sans-serif} h1,h2,h3,p{margin:0} h1,h2,h3{line-height:1.18;letter-spacing:-.025em} h1{font-size:clamp(36px,4.4vw,64px);max-width:15ch} h2{font-size:clamp(28px,3vw,42px);max-width:24ch} h3{font-size:23px} a{color:inherit;text-underline-offset:4px} button,input,select,textarea{font:inherit} a,button,summary,select{cursor:pointer} :focus-visible{outline:3px solid var(--deep);outline-offset:5px} .wrap,.v-wrap{width:min(100% - 48px,1180px);margin-inline:auto} .section{padding-block:80px} .section--white{background:#fff} .section-head{margin-bottom:32px;max-width:70ch} .section-head p{margin-top:18px;color:var(--muted)} .eyebrow{font-size:14px;color:var(--deep);margin-bottom:16px} .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 24px;border:1px solid transparent;border-radius:999px;background:var(--accent);color:#092c43;font-weight:600;text-decoration:none;line-height:1.3;gap:8px} .btn:hover{background:#94d0f1} .btn--outline{background:transparent;border-color:#839eae} .btn--outline:hover{background:#e2f0f8} .btn:disabled{opacity:.55;cursor:not-allowed} .note{font-size:14px;color:var(--muted)}
+.header{position:sticky;top:0;z-index:30;background:#eef4f8;border-bottom:1px solid var(--line)} .header__inner{min-height:88px;display:flex;align-items:center;justify-content:space-between;gap:24px} .brand{font-size:17px;line-height:1.3;font-weight:650;text-decoration:none;max-width:28ch} .nav{display:flex;gap:22px;align-items:center;font-size:15px} .nav a{padding-block:12px;text-decoration:none} .nav a:hover{text-decoration:underline} .header .btn{font-size:14px;padding:11px 18px;white-space:nowrap}
+.hero{position:relative;isolation:isolate;overflow:hidden;background:#dbe9f0} .hero__image{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center} .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#eef4f8f5 0%,#eef4f8df 38%,#eef4f850 70%,#eef4f810)} .hero__inner{padding-block:86px 72px;min-height:610px;display:flex;flex-direction:column;justify-content:center;align-items:start} .hero__lead{font-size:21px;line-height:1.55;max-width:45ch;margin-top:24px} .hero__actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px} .hero__note{margin-top:22px;max-width:54ch} .hero__credit{position:absolute;right:24px;bottom:16px;background:#eef4f8df;padding:5px 10px;font-size:12px;border-radius:4px}
+.prices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px} .price-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column} .price-card p{color:var(--muted);margin-top:16px} .price-card__rate{font-size:30px;line-height:1.2;font-weight:650;margin-top:24px} .price-card small{font-size:14px;color:var(--muted);margin-top:7px} .price-card a{font-size:15px;margin-top:24px} .price-note{margin-top:24px;max-width:85ch}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start} .calc-grid .section-head{position:sticky;top:125px} .calc-fields{display:grid;gap:12px;background:var(--canvas);padding:32px;border-radius:var(--radius)} label{font-size:15px;font-weight:600} input,select,textarea{width:100%;border:1px solid #819baa;background:#fff;border-radius:6px;padding:13px;color:var(--ink)} input[aria-invalid="true"]{border-color:#973d25} .error{font-size:14px;color:#973d25;min-height:23px} .calc-fields output{display:block;font-size:36px;font-weight:650;line-height:1.2;margin:10px 0} .calc-fields .note{margin-bottom:10px} .request-panel{border-top:1px solid var(--line);padding-top:20px;margin-top:8px} .request-panel[hidden]{display:none} .request-panel textarea{min-height:180px;margin-block:10px 12px;resize:none} .request-panel .status{font-size:14px;min-height:24px;margin-top:10px;color:var(--deep)}
+.legend{display:flex;gap:12px 24px;flex-wrap:wrap;margin:20px 0 0;padding:0;list-style:none;font-size:14px} .legend b{margin-right:7px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:2px 7px} .room{border-top:1px solid #a9c0cf} .room:last-child{border-bottom:1px solid #a9c0cf} .room>summary{display:flex;align-items:center;gap:18px;list-style:none;padding:24px 4px;font-size:24px;font-weight:600;line-height:1.3} .room>summary::-webkit-details-marker{display:none} .room>summary::after{content:"+";font-size:30px;font-weight:400;margin-left:auto;min-width:24px;text-align:center} .room[open]>summary::after{content:"-"} .room__count{font-size:14px;font-weight:400;color:var(--muted)} .room__body{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.5fr);gap:40px;padding-block:6px 32px;align-items:start} .zone__fig{margin:0;background:#fff;border-radius:var(--radius);overflow:hidden} .zone__fig img{display:block;width:100%;height:auto} .zone__fig figcaption{font-size:14px;line-height:1.6;padding:18px;color:var(--muted)} .ai-caption{display:block;font-size:12px;color:var(--deep);margin-bottom:8px} .chk{list-style:none;padding:0;margin:0;font-size:15px} .chk>li{display:grid;grid-template-columns:minmax(0,1fr) 100px;gap:12px;border-bottom:1px solid var(--line);padding:13px 0} .chk__text{display:flex;gap:10px;line-height:1.5} .chk__n{font-size:12px;color:var(--muted);min-width:17px;padding-top:3px} .chk__text small{display:block;font-size:12px;color:var(--muted);margin-top:4px} .chk__cols{font-size:12px;color:var(--muted)} .chk__cols>span:last-child,.chk__cells{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;text-align:center;align-items:start} .chk__cells i{font-style:normal;display:block;font-size:16px;font-weight:650} .chk__cells .y::before{content:"✓";color:var(--deep)} .chk__cells .n::before{content:"·";color:#647a89}
+.steps{list-style:none;counter-reset:step;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;padding:0;margin:0} .steps li{counter-increment:step;border-top:2px solid var(--accent);padding-top:20px} .steps li::before{content:counter(step);color:var(--deep);font-size:14px;display:block;margin-bottom:14px} .steps h3{font-size:21px} .steps p{font-size:15px;margin-top:14px;color:var(--muted)}
+.team{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:64px} .team__figure{margin:0} .team__figure img{width:100%;height:auto;display:block;border-radius:var(--radius)} .team__figure figcaption{font-size:13px;color:var(--muted);margin-top:12px} .team__copy>p{color:var(--muted);margin-top:20px} .team__points{list-style:none;padding:0;margin:24px 0;display:grid;gap:18px} .team__points li{padding-left:22px;position:relative;font-size:15px;color:var(--muted)} .team__points li::before{content:"✓";position:absolute;left:0;color:var(--deep)} .team__points b{display:block;color:var(--ink);font-size:17px;margin-bottom:4px}
+.faq{max-width:850px} .faq details{border-top:1px solid var(--line)} .faq details:last-child{border-bottom:1px solid var(--line)} .faq summary{padding:22px 0;font-size:18px;font-weight:600} .faq details p{padding:0 0 24px;color:var(--muted);font-size:16px;max-width:72ch}
+.site-footer{background:#092c43;color:#d6e6f0;padding:64px 0 24px} .site-footer__grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:36px 56px} .site-footer h2{color:#fff;font-size:30px;margin-bottom:20px} .site-footer h3{color:#fff;font-size:18px;letter-spacing:0;margin-bottom:20px} .site-footer p{font-size:15px;line-height:1.65;max-width:44ch} .site-footer__demo{display:inline-block;color:#a8d9f4;font-size:13px;margin-top:18px;border:1px solid #46677e;border-radius:4px;padding:5px 10px} .site-footer__contacts{display:grid;gap:15px;margin:0;font-size:15px} .site-footer__contacts dt{color:#a8d9f4;font-size:13px;margin-bottom:3px} .site-footer__contacts dd{margin:0} .site-footer a{color:#d6e6f0} .site-footer a:hover{color:#fff} .site-footer :focus-visible{outline-color:#a8d9f4} .site-footer__nav a{display:block;width:fit-content;padding-block:8px;font-size:15px} .site-footer__documents{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 32px;border-top:1px solid #36566c;margin-top:40px;padding-top:20px;align-items:start} .site-footer summary{padding:12px 0;font-size:14px;line-height:1.5} .site-footer details p{font-size:14px;padding:4px 0 16px} .site-footer__bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 28px;margin-top:28px;border-top:1px solid #36566c;padding-top:24px;align-items:center} .site-footer__bottom p,.site-footer__bottom a{font-size:13px;max-width:none} .site-footer__bottom a{padding-block:10px}
+@media(max-width:1000px){.nav{gap:16px}.nav a:nth-child(3){display:none}.brand{max-width:23ch}.prices{gap:14px}.price-card{padding:22px}.team{gap:32px}.steps{grid-template-columns:1fr 1fr}.calc-grid{gap:32px}}
+@media(max-width:700px){html{scroll-padding-top:126px}.wrap,.v-wrap{width:calc(100% - 40px)}.section{padding-block:52px}.header__inner{min-height:108px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 14px;padding-block:12px 8px}.brand{font-size:14px;max-width:23ch}.header .btn{font-size:12px;padding:10px 12px;min-height:42px;grid-column:2;grid-row:1}.nav{grid-column:1/-1;justify-content:space-between;gap:8px;font-size:13px}.nav a{padding-block:7px}.nav a:nth-child(3){display:block}.hero__inner{min-height:0;padding:58px 0 68px}.hero__image{object-position:65% center;opacity:.65}.hero::after{background:linear-gradient(90deg,#eef4f8ef,#eef4f8bd)}.hero__lead{font-size:18px}.hero__credit{right:20px;bottom:12px;font-size:11px}.hero__note{font-size:13px}.hero__actions{gap:10px}.hero__actions .btn{padding:12px 18px;font-size:14px}.prices,.calc-grid,.team{grid-template-columns:1fr}.price-card{padding:24px}.price-card__rate{margin-top:18px}.calc-grid .section-head{position:static;margin:0}.calc-fields{padding:24px}.room>summary{font-size:20px;gap:12px;padding-block:22px}.room__count{font-size:12px}.room__body{grid-template-columns:1fr;gap:22px}.zone__fig img{aspect-ratio:auto}.chk{font-size:14px}.chk>li{grid-template-columns:minmax(0,1fr) 84px;gap:8px}.team{gap:28px}.team__figure{max-width:480px}.team__copy h2{font-size:30px}.site-footer{padding-top:44px}.site-footer__grid{grid-template-columns:1fr 1fr;gap:32px}.site-footer__intro{grid-column:1/-1}.site-footer__documents{grid-template-columns:1fr;gap:0}.site-footer h2{font-size:28px}}
+@media(max-width:420px){.steps{grid-template-columns:1fr;gap:24px}.site-footer__grid{grid-template-columns:1fr}.site-footer__intro{grid-column:auto}.site-footer__bottom{align-items:start;flex-direction:column}.room>summary{flex-wrap:wrap}.room__count{margin-left:auto}.room>summary::after{margin-left:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<div class="v-page">
-
-  <header class="bar" id="bar">
-    <a class="bar__mark" href="#hero"><i class="tick" aria-hidden="true"></i><span>Уборка квартир в Геленджике</span></a>
-    <div class="bar__act" aria-live="polite" aria-atomic="true">
-      <span class="bar__label">Акт приёмки по списку</span>
-      <span class="bar__count"><b id="cnt">0</b> / <span data-total>36</span></span>
-      <span class="bar__line" aria-hidden="true"><b></b></span>
-      <span class="bar__done">принято</span>
-    </div>
-    <a class="v-btn" href="#demo-calc">Рассчитать уборку</a>
-    <nav class="section-nav" aria-label="Разделы сайта">
-      <a href="#akt">Что входит</a>
-      <a href="#kak">Как работаем</a>
-      <a href="#ceny">Цены</a>
-      <a href="#demo-calc">Расчёт</a>
-    </nav>
-  </header>
-
-  <main>
-
-    <!-- 1 · УЗНАВАНИЕ: кухня после уборки на весь экран, оффер внизу слева, кнопка над сгибом.
-         Вторая реплика - поворот: как читать страницу-акт -->
-    <section class="hero" id="hero" data-v-act="pin" data-v-span="2" aria-label="Уборка квартир по акту">
-      <div data-v-stage>
-        <p class="image-credit">Изображения созданы ИИ для учебного демо</p><div class="v-fill hero__img">
-          <picture>
-            <source media="(max-width: 700px)" srcset="assets-generated-v1/hero-m.webp">
-            <img src="assets-generated-v1/hero.webp" srcset="assets-generated-v1/hero-1200.webp 1200w, assets-generated-v1/hero.webp 1920w" sizes="100vw" alt="Кухня в морской палитре - учебная ИИ-иллюстрация" width="1920" height="1080" fetchpriority="high">
-          </picture>
-        </div>
-        <div class="v-scrim hero__scrim" aria-hidden="true"></div>
-        <div class="v-copy v-copy--lead hero__copy" data-v-cue="0 0.45 0 0.1">
-          <p class="hero__label">Учебный проект · клининг «По пунктам»</p>
-          <h1 class="v-display v-display--xl" data-v-kinetic="lines">Уборка квартир в Геленджике по понятному списку</h1>
-          <p class="v-lede">Кухня, санузел, комнаты и прихожая. Выберите уборку и проверьте каждый пункт по списку.</p>
-          <div class="hero__cta">
-            <a class="v-btn" href="#demo-calc">Рассчитать уборку</a>
-            <p class="hero__hint">Без отправки заявки. Посмотрите пример расчёта.</p>
-          </div>
-        </div>
-        <div class="v-copy v-copy--lead hero__turn" data-v-cue="0.45 1 0.08 0">
-          <p class="hero__label">Как читать эту страницу</p>
-          <h2 class="v-display v-display--lg">Ниже - акт приёмки уборки</h2>
-          <p class="v-lede">36 пунктов по четырём зонам. Галочки в шапке считают, пока вы листаете. По этому же акту принимаете уборку, когда мы закончим.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2 · ЦЕНА БЕЗДЕЙСТВИЯ: «всё помоем» - это не список -->
-    <section class="v-section v-section--tight vsyo" id="vsyo" data-v-act="flow" aria-label="Что обычно отвечают по телефону">
-      <div class="v-wrap vsyo__grid" data-v-in data-v-stagger="80">
-        <div class="vsyo__big" aria-hidden="true"><s>всё</s></div>
-        <div class="vsyo__copy">
-          <h2 class="v-display v-display--lg">«Всё помоем» - это не список</h2>
-          <p class="v-body">Так обычно отвечают по телефону. Дальше - «зависит от площади», «приедем после обеда», и вечером вы сами проверяете, протёрли ли за холодильником.</p>
-          <ul class="lines">
-            <li><b>«Зависит от площади»</b><span>Цену узнаёте, когда клинер уже стоит в прихожей</span></li>
-            <li><b>«Приедем после обеда»</b><span>После обеда - это с часу до семи, и всё это время вы дома</span></li>
-            <li><b>«Всё помыли»</b><span>Что именно - спросить не по чему. Нет списка, значит нет и приёмки</span></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3 · ДОКАЗАТЕЛЬСТВО: акт приёмки. Четыре зоны, каждая - свой акт flow:
-         фото со шторкой, таблица пунктов с колонками П / Г / Р, галочки от --v-p (фирменный ход, JS внизу) -->
-    <section class="v-section akt" id="akt" aria-label="Акт приёмки уборки">
-      <div class="v-wrap">
-        <header class="akt__head" data-v-in data-v-stagger="60">
-          <h2 class="v-display v-display--lg">Акт приёмки уборки</h2>
-          <p class="v-body">Четыре зоны, 36 пунктов. В колонках отмечено, что входит в каждый вид уборки. Это пример состава услуг для учебного сайта. У реальной компании перечень и условия нужно согласовать.</p>
-          <ul class="legend" aria-label="Колонки акта">
-            <li><b>П</b>поддерживающая</li>
-            <li><b>Г</b>генеральная</li>
-            <li><b>Р</b>после ремонта</li>
-          </ul>
-        </header>
-
-        <article class="zone" id="zona-kuhnya" data-v-act="flow" aria-label="Кухня">
-          <div class="zone__head" data-v-in data-v-stagger="60">
-            <span class="zone__num">01</span>
-            <h3 class="v-display v-display--md">Кухня</h3>
-            <span class="zone__count">11 пунктов</span>
-          </div>
-          <figure class="zone__fig comparison" data-v-reveal="left" data-v-reveal-at="0.07 0.27">
+<header class="header"><div class="wrap header__inner"><a class="brand" href="#hero">Уборка квартир<br>в Геленджике</a><nav class="nav" aria-label="Разделы сайта"><a href="#ceny">Цены</a><a href="#akt">Что входит</a><a href="#brigada">Бригада</a><a href="#faq">Вопросы</a></nav><a class="btn" href="#demo-calc">Рассчитать уборку</a></div></header>
+<main>
+<section class="hero" id="hero" aria-labelledby="hero-title"><picture><source media="(max-width:700px)" srcset="assets-generated-v1/hero-m.webp"><img class="hero__image" src="assets-generated-v1/hero.webp" srcset="assets-generated-v1/hero-1200.webp 1200w, assets-generated-v1/hero.webp 1920w" sizes="100vw" alt="Светлая кухня с видом на море. ИИ-иллюстрация" width="1920" height="1080" fetchpriority="high"></picture><div class="wrap hero__inner"><p class="eyebrow">Учебный демо-сайт</p><h1 id="hero-title">Уборка квартир в Геленджике по понятному списку</h1><p class="hero__lead">Выберите вид уборки, посмотрите предварительную стоимость и узнайте, что входит в работу по каждой комнате.</p><div class="hero__actions"><a class="btn" href="#demo-calc">Рассчитать уборку</a><a class="btn btn--outline" href="#akt">Что входит в уборку</a></div><p class="note hero__note">Цены и условия приведены для примера. Реальные заказы на этом сайте пока не принимаются.</p></div><span class="hero__credit">ИИ-иллюстрация для учебного демо</span></section>
+<section class="section" id="ceny" aria-labelledby="prices-title"><div class="wrap"><div class="section-head"><p class="eyebrow">Три вида уборки</p><h2 id="prices-title">Выберите подходящий вариант</h2><p>Предварительный расчёт - по площади. Итоговую стоимость и состав работ согласуют до выезда после уточнения задач.</p></div><div class="prices">
+<article class="price-card"><h3>Поддерживающая</h3><p>Для регулярной чистоты: открытые поверхности, сантехника, полы и мусор.</p><div class="price-card__rate">60 ₽ / м²</div><small>Минимальная стоимость - 2 400 ₽</small><a href="#demo-calc" data-kind="60,2400">Рассчитать поддерживающую</a></article>
+<article class="price-card"><h3>Генеральная</h3><p>Для тщательной уборки: труднодоступные места, техника и шкафы внутри по списку работ.</p><div class="price-card__rate">100 ₽ / м²</div><small>Минимальная стоимость - 4 000 ₽</small><a href="#demo-calc" data-kind="100,4000">Рассчитать генеральную</a></article>
+<article class="price-card"><h3>После ремонта</h3><p>Строительная пыль, следы отделочных работ и защитная плёнка на доступных поверхностях.</p><div class="price-card__rate">140 ₽ / м²</div><small>Минимальная стоимость - 5 600 ₽</small><a href="#demo-calc" data-kind="140,5600">Рассчитать после ремонта</a></article>
+</div><p class="note price-note">Учебные цены. Окна снаружи, химчистка мебели и ковров в расчёт не входят. Эти работы и сложные загрязнения обсуждаются отдельно.</p></div></section>
+<section class="section section--white" id="demo-calc" aria-labelledby="calc-title"><div class="wrap calc-grid"><div class="section-head"><p class="eyebrow">Без телефона и регистрации</p><h2 id="calc-title">Прикиньте стоимость уборки</h2><p>Укажите площадь и выберите вид уборки. Калькулятор учтёт минимальную стоимость заказа.</p><p class="note">После расчёта можно подготовить текст запроса. Это учебный пример: контакты компании ещё не добавлены, данные никуда не отправляются.</p></div><div class="calc-fields"><label for="area">Площадь квартиры, м²</label><input id="area" type="number" min="10" max="500" step="1" value="50" inputmode="numeric" aria-describedby="area-error"><p class="error" id="area-error" aria-live="polite"></p><label for="kind">Вид уборки</label><select id="kind"><option value="60,2400">Поддерживающая</option><option value="100,4000" selected>Генеральная</option><option value="140,5600">После ремонта</option></select><output id="estimate" aria-live="polite"></output><p class="note">Предварительная учебная сумма. Дополнительные работы в неё не включены.</p><button class="btn" type="button" id="prepare-request" aria-expanded="false" aria-controls="request-panel">Подготовить текст запроса</button><div class="request-panel" id="request-panel" hidden><label for="request-text">Текст для сообщения клининговой компании</label><textarea id="request-text" readonly></textarea><p class="note">Скопируйте текст и добавьте удобную дату. Это не отправка заявки.</p><button class="btn btn--outline" type="button" id="copy-request">Скопировать текст</button><p class="status" id="copy-status" role="status"></p></div></div></div></section>
+<section class="section" id="akt" aria-labelledby="work-title"><div class="wrap"><div class="section-head"><h2 id="work-title">Что входит в уборку</h2><p>Откройте нужную комнату и сравните три вида уборки. Галочка означает, что работа входит в выбранный вид; точка - что не входит. Это пример перечня: перед заказом его согласуют с компанией.</p><ul class="legend" aria-label="Обозначения видов уборки"><li><b>П</b>поддерживающая</li><li><b>Г</b>генеральная</li><li><b>Р</b>после ремонта</li></ul></div><details class="room"><summary><span>Кухня</span><span class="room__count">11 пунктов</span></summary><div class="room__body"><figure class="zone__fig comparison">
             <img src="assets-generated-v1/kitchen.webp" alt="Кухня: слева до уборки, справа после. ИИ-иллюстрация" width="1000" height="1333" loading="lazy" decoding="async">
             <figcaption><span class="ai-caption">Было / Стало · ИИ-иллюстрация, не фото работ</span>Плита, фартук и фасады снаружи - в каждой уборке. Внутри техники и шкафов - в генеральной.</figcaption>
-          </figure>
-          <ol class="chk" data-v-in data-v-stagger="40">
+          </figure><ol class="chk">
             <li class="chk__cols" aria-hidden="true"><span>Пункт</span><span><b>П</b><b>Г</b><b>Р</b></span></li>
             <li class="chk__row"><span class="chk__text"><span class="chk__n">1</span>Раковина, смеситель, посуда в раковине</span><span class="chk__cells"><i class="y"></i><i class="y"></i><i class="y"></i></span></li>
             <li class="chk__row"><span class="chk__text"><span class="chk__n">2</span>Столешница, фартук, фасады снаружи</span><span class="chk__cells"><i class="y"></i><i class="y"></i><i class="y"></i></span></li>
@@ -421,20 +59,10 @@ html{scrollbar-gutter:stable;scrollbar-color:#155b83 #eef4f8;scroll-behavior:smo
             <li class="chk__row"><span class="chk__text"><span class="chk__n">9</span>Окно изнутри, подоконник, радиатор</span><span class="chk__cells"><i class="n"></i><i class="y"></i><i class="y"></i></span></li>
             <li class="chk__row"><span class="chk__text"><span class="chk__n">10</span>Пол, плинтусы, мусор вынести, ведро вымыть</span><span class="chk__cells"><i class="y"></i><i class="y"></i><i class="y"></i></span></li>
             <li class="chk__row"><span class="chk__text"><span class="chk__n">11</span><span>Строительная пыль со стен, потолка и светильников<small>Следы краски, клея и защитной плёнки</small></span></span><span class="chk__cells"><i class="n"></i><i class="n"></i><i class="y"></i></span></li>
-          </ol>
-        </article>
-
-        <article class="zone" id="zona-sanuzel" data-v-act="flow" aria-label="Санузел">
-          <div class="zone__head" data-v-in data-v-stagger="60">
-            <span class="zone__num">02</span>
-            <h3 class="v-display v-display--md">Санузел</h3>
-            <span class="zone__count">10 пунктов</span>
-          </div>
-          <figure class="zone__fig comparison" data-v-reveal="up" data-v-reveal-at="0.07 0.27">
+          </ol></div></details><details class="room"><summary><span>Санузел</span><span class="room__count">10 пунктов</span></summary><div class="room__body"><figure class="zone__fig comparison">
             <img src="assets-generated-v1/bath.webp" alt="Санузел: слева налёт на стекле, справа чистое стекло. ИИ-иллюстрация" width="1000" height="1333" loading="lazy" decoding="async">
             <figcaption><span class="ai-caption">Было / Стало · ИИ-иллюстрация, не фото работ</span>Сантехника, стекло и зеркало - всегда. Плитка до потолка, налёт и стиральная машина - в генеральной.</figcaption>
-          </figure>
-          <ol class="chk" data-v-in data-v-stagger="40">
+          </figure><ol class="chk">
             <li class="chk__cols" aria-hidden="true"><span>Пункт</span><span><b>П</b><b>Г</b><b>Р</b></span></li>
             <li class="chk__row"><span class="chk__text"><span class="chk__n">12</span>Унитаз снаружи и внутри, бачок, ёршик</span><span class="chk__cells"><i class="y"></i><i class="y"></i><i class="y"></i></span></li>
             <li class="chk__row"><span class="chk__text"><span class="chk__n">13</span>Ванна или душевая, стекло кабины, шторка</span><span class="chk__cells"><i class="y"></i><i class="y"></i><i class="y"></i></span></li>
@@ -446,20 +74,10 @@ html{scrollbar-gutter:stable;scrollbar-color:#155b83 #eef4f8;scroll-behavior:smo
             <li class="chk__row"><span class="chk__text"><span class="chk__n">19</span>Вентиляционная решётка, дверь, ручки, выключатели</span><span class="chk__cells"><i class="n"></i><i class="y"></i><i class="y"></i></span></li>
             <li class="chk__row"><span class="chk__text"><span class="chk__n">20</span>Пол, коврик, плинтусы</span><span class="chk__cells"><i class="y"></i><i class="y"></i><i class="y"></i></span></li>
             <li class="chk__row"><span class="chk__text"><span class="chk__n">21</span><span>Следы цемента и затирки на плитке<small>Защитная плёнка с двери и сантехники</small></span></span><span class="chk__cells"><i class="n"></i><i class="n"></i><i class="y"></i></span></li>
-          </ol>
-        </article>
-
-        <article class="zone" id="zona-komnaty" data-v-act="flow" aria-label="Комнаты">
-          <div class="zone__head" data-v-in data-v-stagger="60">
-            <span class="zone__num">03</span>
-            <h3 class="v-display v-display--md">Комнаты</h3>
-            <span class="zone__count">9 пунктов</span>
-          </div>
-          <figure class="zone__fig comparison" data-v-reveal="right" data-v-reveal-at="0.07 0.27">
+          </ol></div></details><details class="room"><summary><span>Комнаты</span><span class="room__count">9 пунктов</span></summary><div class="room__body"><figure class="zone__fig comparison">
             <img src="assets-generated-v1/room.webp" alt="Комната: слева пыль и крошки, справа чистые поверхности. ИИ-иллюстрация" width="1000" height="1333" loading="lazy" decoding="async">
             <figcaption><span class="ai-caption">Было / Стало · ИИ-иллюстрация, не фото работ</span>Пыль с открытых поверхностей, пылесос и полы - всегда. Высота, шкафы внутри и окна - в генеральной.</figcaption>
-          </figure>
-          <ol class="chk" data-v-in data-v-stagger="40">
+          </figure><ol class="chk">
             <li class="chk__cols" aria-hidden="true"><span>Пункт</span><span><b>П</b><b>Г</b><b>Р</b></span></li>
             <li class="chk__row"><span class="chk__text"><span class="chk__n">22</span>Пыль с открытых поверхностей: столы, полки, техника</span><span class="chk__cells"><i class="y"></i><i class="y"></i><i class="y"></i></span></li>
             <li class="chk__row"><span class="chk__text"><span class="chk__n">23</span>Пыль на высоте: шкафы сверху, карнизы, люстры</span><span class="chk__cells"><i class="n"></i><i class="y"></i><i class="y"></i></span></li>
@@ -470,20 +88,10 @@ html{scrollbar-gutter:stable;scrollbar-color:#155b83 #eef4f8;scroll-behavior:smo
             <li class="chk__row"><span class="chk__text"><span class="chk__n">28</span>Двери, ручки, выключатели, розетки</span><span class="chk__cells"><i class="n"></i><i class="y"></i><i class="y"></i></span></li>
             <li class="chk__row"><span class="chk__text"><span class="chk__n">29</span>Кровать заправить, вещи по местам, мусор вынести</span><span class="chk__cells"><i class="y"></i><i class="y"></i><i class="n"></i></span></li>
             <li class="chk__row"><span class="chk__text"><span class="chk__n">30</span><span>Строительная пыль со стен и потолка<small>Плёнка и наклейки с окон и дверей</small></span></span><span class="chk__cells"><i class="n"></i><i class="n"></i><i class="y"></i></span></li>
-          </ol>
-        </article>
-
-        <article class="zone" id="zona-prihozhaya" data-v-act="flow" aria-label="Прихожая и балкон">
-          <div class="zone__head" data-v-in data-v-stagger="60">
-            <span class="zone__num">04</span>
-            <h3 class="v-display v-display--md">Прихожая и балкон</h3>
-            <span class="zone__count">6 пунктов</span>
-          </div>
-          <figure class="zone__fig comparison" data-v-reveal="up" data-v-reveal-at="0.07 0.27">
+          </ol></div></details><details class="room"><summary><span>Прихожая и балкон</span><span class="room__count">6 пунктов</span></summary><div class="room__body"><figure class="zone__fig comparison">
             <img src="assets-generated-v1/hall.webp" alt="Прихожая: слева следы на полу, справа чистый пол. ИИ-иллюстрация" width="1000" height="1333" loading="lazy" decoding="async">
             <figcaption><span class="ai-caption">Было / Стало · ИИ-иллюстрация, не фото работ</span>Зеркало, дверь и пол - всегда. Шкаф внутри и балкон - в генеральной и после ремонта.</figcaption>
-          </figure>
-          <ol class="chk" data-v-in data-v-stagger="40">
+          </figure><ol class="chk">
             <li class="chk__cols" aria-hidden="true"><span>Пункт</span><span><b>П</b><b>Г</b><b>Р</b></span></li>
             <li class="chk__row"><span class="chk__text"><span class="chk__n">31</span>Зеркало, входная дверь изнутри, ручки, домофон</span><span class="chk__cells"><i class="y"></i><i class="y"></i><i class="y"></i></span></li>
             <li class="chk__row"><span class="chk__text"><span class="chk__n">32</span>Обувница, вешалка и тумба снаружи, обувь на полку</span><span class="chk__cells"><i class="y"></i><i class="y"></i><i class="y"></i></span></li>
@@ -491,127 +99,18 @@ html{scrollbar-gutter:stable;scrollbar-color:#155b83 #eef4f8;scroll-behavior:smo
             <li class="chk__row"><span class="chk__text"><span class="chk__n">34</span>Пол, плинтусы, коврик у двери вытряхнуть</span><span class="chk__cells"><i class="y"></i><i class="y"></i><i class="y"></i></span></li>
             <li class="chk__row"><span class="chk__text"><span class="chk__n">35</span>Балкон: пол, подоконник, остекление изнутри</span><span class="chk__cells"><i class="n"></i><i class="y"></i><i class="y"></i></span></li>
             <li class="chk__row"><span class="chk__text"><span class="chk__n">36</span><span>Мусор вынести<small>После ремонта - мешки со строительным мусором до контейнера у подъезда</small></span></span><span class="chk__cells"><i class="y"></i><i class="y"></i><i class="y"></i></span></li>
-          </ol>
-        </article>
-      </div>
-    </section>
-
-    <!-- 4 · ДОКАЗАТЕЛЬСТВО: как проходит. Фото на весь экран, четыре реплики-шага встык -->
-    <section class="kak" id="kak" data-v-act="pin" data-v-span="2.4" aria-label="Как проходит уборка">
-      <div data-v-stage>
-        <div class="v-fill">
-          <img src="assets-generated-v1/process.webp" srcset="assets-generated-v1/process-1200.webp 1200w, assets-generated-v1/process.webp 1920w" sizes="100vw" alt="Средства, салфетки и пылесос у двери. ИИ-иллюстрация" width="1920" height="1080" loading="lazy" decoding="async">
-        </div>
-        <div class="v-scrim kak__scrim" aria-hidden="true"></div>
-        <p class="kak__title">Как проходит</p>
-        <div class="v-copy v-copy--lead kak__step" data-v-cue="0 0.28 0 0.05">
-          <span class="kak__n">1 / 4 · Заявка</span>
-          <h2 class="v-display v-display--lg">Пишете метраж, вид уборки и адрес</h2>
-          <p class="v-lede">Отвечаем суммой по метражу и свободными датами. Никаких «приедем, посмотрим»: цена известна до приезда.</p>
-        </div>
-        <div class="v-copy v-copy--lead kak__step" data-v-cue="0.28 0.54 0.05 0.05">
-          <span class="kak__n">2 / 4 · Подтверждение</span>
-          <h2 class="v-display v-display--lg">Накануне подтверждаем время</h2>
-          <p class="v-lede">Сообщением: во сколько приедем и кто. В том же сообщении - акт с пунктами, которые входят в вашу уборку.</p>
-        </div>
-        <div class="v-copy v-copy--lead kak__step" data-v-cue="0.54 0.78 0.05 0.05">
-          <span class="kak__n">3 / 4 · Приезд</span>
-          <h2 class="v-display v-display--lg">К своему времени, со своей химией</h2>
-          <p class="v-lede">Пылесос, стремянка, средства и салфетки - наши. Ваша задача - открыть дверь или передать ключи по акту.</p>
-        </div>
-        <div class="v-copy v-copy--lead kak__step" data-v-cue="0.78 1 0.05 0">
-          <span class="kak__n">4 / 4 · Приёмка</span>
-          <h2 class="v-display v-display--lg">Проходите по акту вместе с клинером</h2>
-          <p class="v-lede">Пункт не принят - доделываем до ухода. Оплата после приёмки, а не «переведите заранее».</p>
-        </div>
-        <div class="kak__index" aria-hidden="true"><span>1 Заявка</span><span>2 Подтверждение</span><span>3 Приезд</span><span>4 Приёмка</span></div>
-      </div>
-    </section>
-
-<!-- 5 · ВЫБОР: виды уборки и цена по метражу -->
-    <section class="v-section v-section--tight ceny" id="ceny" data-v-act="flow" aria-label="Виды уборки и цены">
-      <div class="v-wrap ceny__grid">
-        <div class="ceny__head" data-v-in data-v-stagger="60">
-          <h2 class="v-display v-display--lg">Цена по метражу - до приезда</h2>
-          <p class="v-body">Назовите площадь квартиры и вид уборки - получите сумму, а не «зависит от площади». Своя химия и оборудование в цене. Буква у каждого вида - это колонка в акте выше.</p>
-          <div class="example">
-            <p class="example__title">Учебные цены, не оферта</p>
-            <p class="example__text v-nums">Квартира 50 м², генеральная: от 5 000 ₽.</p>
-            <p class="example__note">Окна снаружи, химчистка мягкой мебели и ковров, уборка после пожара или затопления - считаем отдельно, по запросу.</p>
-          </div>
-          <a class="v-btn v-btn--ghost" href="#demo-calc">Рассчитать уборку</a>
-        </div>
-        <ul class="rows rows--ceny" data-v-in data-v-stagger="70">
-          <li><span class="rows__col">П</span><h3>Поддерживающая</h3><p>Раз в неделю или две: открытые поверхности, сантехника, полы, мусор. Пункты акта с отметкой «П».</p><span class="price v-nums">60 ₽ за м²</span><span class="min v-nums">от 2 400 ₽ за квартиру</span></li>
-          <li><span class="rows__col">Г</span><h3>Генеральная</h3><p>Раз в сезон или перед событием: шкафы и техника внутри, пыль на высоте, окна изнутри, налёт. Всё с отметкой «Г».</p><span class="price v-nums">100 ₽ за м²</span><span class="min v-nums">от 4 000 ₽ за квартиру</span></li>
-          <li><span class="rows__col">Р</span><h3>После ремонта</h3><p>Строительная пыль со всех поверхностей, следы краски, клея и затирки, плёнка с окон, мешки до контейнера. Отметка «Р».</p><span class="price v-nums">140 ₽ за м²</span><span class="min v-nums">от 5 600 ₽ за квартиру</span></li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="v-section brigada" id="brigada" aria-labelledby="brigada-title">
-      <div class="v-wrap brigada__grid">
-        <figure class="brigada__photo">
-          <img src="assets-generated-v1/Бригада%20Чистюли.jpg" alt="Талисманы бригады Чистюли: енот с пылесосом и рыжий кот со шваброй в синей рабочей форме" width="1024" height="1024" loading="lazy" decoding="async">
-          <figcaption>Бригада «Чистюли» - наши рисованные талисманы.</figcaption>
-        </figure>
-        <div class="brigada__copy">
-          <h2 class="v-display v-display--lg" id="brigada-title">Кто приедет к вам домой</h2>
-          <p class="v-body">Знакомьтесь, «Чистюли»! Наши талисманы встречают вас на сайте, а заботу о доме берёт на себя бригада клинеров.</p>
-          <p class="v-body">Перед выездом обсудим задачи и ваши пожелания: каким поверхностям нужно особое внимание и какие вещи лучше не трогать. Приедем со средствами и инвентарём, пройдём по согласованному списку, а в конце вместе с вами проверим результат.</p>
-          <p class="v-body">Вы знаете, что будет сделано, а мы знаем, что важно именно для вашего дома.</p>
-          <a class="v-btn v-btn--ghost" href="#akt">Посмотреть список работ</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6 · ДОВЕРИЕ: кто приезжает и чем моем + отзывы с Яндекс.Карт (только слоты) -->
-    <section class="v-section kto" id="kto" data-v-act="flow" aria-label="Что обсудить перед уборкой">
-      <div class="v-wrap">
-        <div class="kto__grid">
-          <figure class="kto__fig" data-v-reveal="left" data-v-reveal-at="0.12 0.5">
-            <img src="assets-generated-v1/supplies.webp" srcset="assets-generated-v1/supplies-1000.webp 1000w, assets-generated-v1/supplies.webp 1600w" sizes="(max-width: 860px) 100vw, 38rem" alt="Набор средств и оборудования для уборки. ИИ-иллюстрация" width="1600" height="900" loading="lazy" decoding="async">
-            <figcaption><b>Салфетки по зонам:</b> синие - кухня, красные - санузел, жёлтые - комнаты, зелёные - прихожая. Не смешиваем.</figcaption>
-          </figure>
-          <div class="kto__copy" data-v-in data-v-stagger="60">
-            <h2 class="v-display v-display--lg">Кто приезжает и чем моем</h2>
-            <ul class="facts">
-              <li><b>Состав команды</b><span>До заказа стоит уточнить, кто приедет, сколько человек потребуется и кто отвечает за работу.</span></li>
-              <li><b>Свои средства и оборудование</b><span>Пылесос, стремянка, средства для кухни, санузла, стекла и пола. Без хлора по умолчанию, с хлором - по вашей просьбе.</span></li>
-              <li><b>Салфетки не смешиваем</b><span>Для санузла и кухни - разные, цветом. Салфетка из санузла на столешнице не окажется.</span></li>
-              <li><b>Если вас нет дома</b><span>Ключи принимаем и возвращаем по акту передачи, фото каждой зоны до и после - в мессенджер.</span></li>
-              <li><b>Оплата после приёмки</b><span>Проходите по акту вместе с клинером. Пункт не принят - доделываем до ухода.</span></li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-<section class="v-section" id="demo-calc" aria-labelledby="calc-title"><div class="v-wrap calc"><div><p class="demo-note">Учебное демо. Компания, цены и условия вымышлены.</p><h2 class="v-display v-display--lg" id="calc-title">Рассчитать уборку</h2><p class="v-body">Пример расчёта по площади. Контакты не нужны, данные никуда не отправляются.</p></div><div class="calc__fields"><label for="area">Площадь квартиры, м²</label><input id="area" type="number" min="10" max="500" value="50" inputmode="numeric" aria-describedby="area-error"><p id="area-error" class="error" aria-live="polite"></p><label for="kind">Вид уборки</label><select id="kind"><option value="60,2400">Поддерживающая</option><option value="100,4000" selected>Генеральная</option><option value="140,5600">После ремонта</option></select><output id="estimate" aria-live="polite"></output><p>Учебная сумма. Реальная стоимость зависит от согласованного состава работ.</p></div></div></section>
-    <!-- 7 · ДЕЙСТВИЕ: акт принят, расчёт. Реплика держится, футер внутри сцены -->
-    <section class="fin" id="raschet" data-v-act="pin" data-v-span="1.5" aria-label="Рассчитать уборку">
-      <div data-v-stage>
-        <div class="fin__inner">
-          <div class="fin__copy" data-v-cue="0.04">
-            <p class="fin__stamp"><i class="tick" aria-hidden="true"></i>Акт приёмки · <b><span data-total>36</span> из <span data-total>36</span></b> · принято</p>
-            <h2 class="v-display">Начните с площади квартиры</h2>
-            <p class="v-lede">Посмотрите учебный расчёт. Для реального заказа здесь появятся контакты компании.</p>
-            <a class="v-btn" href="#demo-calc">Рассчитать уборку</a>
-          </div>
-          <div class="fin__meta" data-v-cue="0.1">
-            <p class="fin__tel">Учебное демо</p>
-            
-            <span><b>Выездная уборка</b> в Геленджике</span>
-            <span>Пример графика: ежедневно 09:00-19:00</span>
-            <span>Контакты реальной компании пока не добавлены</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-  <footer class="site-footer" id="contacts" aria-labelledby="footer-title">
+          </ol></div></details></div></section>
+<section class="section section--white" id="kak" aria-labelledby="steps-title"><div class="wrap"><div class="section-head"><h2 id="steps-title">От первого сообщения до проверки результата</h2><p>Пример порядка работы. Конкретные сроки и условия подтверждает исполнитель.</p></div><ol class="steps"><li><h3>Расскажите о квартире</h3><p>Площадь, вид уборки и особые задачи помогут уточнить стоимость и подобрать удобную дату.</p></li><li><h3>Согласуйте детали</h3><p>До выезда - состав работ, итоговую цену, время приезда и состав бригады.</p></li><li><h3>Встретьте бригаду</h3><p>Покажите поверхности, требующие особого ухода, и вещи, которые не нужно трогать.</p></li><li><h3>Проверьте по списку</h3><p>Вместе пройдите по комнатам и обсудите замечания. Порядок приёмки и оплаты согласуется заранее.</p></li></ol></div></section>
+<section class="section" id="brigada" aria-labelledby="brigada-title"><div class="wrap team"><figure class="team__figure"><img src="assets-generated-v1/Бригада%20Чистюли.jpg" alt="Енот с пылесосом и Кошечка со шваброй в синей форме - рисованные талисманы бригады Чистюли" width="1024" height="1024" loading="lazy" decoding="async"><figcaption>Енот и Кошечка - талисманы «Чистюли», а не фотографии сотрудников.</figcaption></figure><div class="team__copy"><p class="eyebrow">Знакомьтесь, «Чистюли»</p><h2 id="brigada-title">Бригада и забота о вашем доме</h2><p>Наши рисованные помощники добавляют уборке немного настроения. А в настоящем заказе главное - понятные договорённости с людьми, которым вы доверяете дом.</p><ul class="team__points"><li><b>Знакомство до приезда</b>Кто будет работать, сколько человек потребуется и с кем связаться по вопросам уборки - всё это важно согласовать заранее.</li><li><b>Средства под ваши поверхности</b>Обсудите состав инвентаря и средств, деликатные покрытия, запахи и другие ограничения. Для кухни и санузла нужны отдельные салфетки.</li><li><b>Внимание к личным вещам</b>Заранее отметьте, что можно перемещать, что не трогать и как организовать доступ, если вас не будет дома.</li></ul><a class="btn btn--outline" href="#faq">Что уточнить перед уборкой</a></div></div></section>
+<section class="section section--white" id="faq" aria-labelledby="faq-title"><div class="wrap"><div class="section-head"><h2 id="faq-title">Перед уборкой часто спрашивают</h2><p>Несколько ориентиров для первого разговора с компанией.</p></div><div class="faq">
+<details><summary>Сколько времени займёт уборка?</summary><p>Это зависит от площади, состояния квартиры, объёма работ и количества сотрудников. Перед заказом попросите назвать ориентировочную длительность именно для вашей квартиры.</p></details>
+<details><summary>Нужно ли оставаться дома?</summary><p>Порядок доступа согласуется с исполнителем. Если вы передаёте ключи, заранее обсудите их передачу и возврат, связь с бригадой и проверку результата.</p></details>
+<details><summary>Как подготовить квартиру?</summary><p>Уберите ценные и личные вещи, предупредите о хрупких предметах, животных и деликатных поверхностях. Уточните, нужно ли освободить полки и обеспечить доступ к воде и электричеству.</p></details>
+<details><summary>Что оплачивается отдельно?</summary><p>В этом демо калькулятор считает только базовую уборку по площади. Мытьё окон снаружи, химчистку мебели и ковров, а также дополнительные задачи нужно отдельно обсудить с исполнителем до выезда.</p></details>
+<details><summary>Что делать, если результат не устраивает?</summary><p>Проверьте согласованный список вместе с бригадой и покажите замечания. Порядок исправления недочётов и оплаты лучше уточнить до начала работ.</p></details>
+<details><summary>Можно ли заказать уборку на этом сайте?</summary><p>Пока это учебный демо-сайт. Здесь можно посмотреть перечень и цены, рассчитать примерную сумму и скопировать текст запроса. Заказ и оплата не подключены; контакты появятся после выбора реальной компании.</p></details>
+</div></div></section>
+</main><footer class="site-footer" id="contacts" aria-labelledby="footer-title">
     <div class="v-wrap">
       <div class="site-footer__grid">
         <div class="site-footer__intro">
@@ -631,7 +130,7 @@ html{scrollbar-gutter:stable;scrollbar-color:#155b83 #eef4f8;scroll-behavior:smo
         <nav class="site-footer__nav" aria-label="Навигация в подвале">
           <h3>Об уборке</h3>
           <a href="#akt">Что входит в уборку</a>
-          <a href="#brigada">Кто приедет к вам домой</a>
+          <a href="#brigada">Бригада и подготовка</a>
           <a href="#ceny">Виды уборки и цены</a>
           <a href="#demo-calc">Рассчитать стоимость</a>
         </nav>
@@ -656,70 +155,12 @@ html{scrollbar-gutter:stable;scrollbar-color:#155b83 #eef4f8;scroll-behavior:smo
         <a href="#hero">Наверх ↑</a>
       </div>
     </div>
-  </footer>
-</div>
-
-<script src="vibe.js"></script>
-<script>
-  // На телефоне пины короче. data-v-span из CSS не поменять, поэтому правим атрибут до монтирования.
-  if (window.matchMedia('(max-width: 860px)').matches) {
-    document.getElementById('hero').setAttribute('data-v-span', '1.5');
-    document.getElementById('kak').setAttribute('data-v-span', '1.9');
-    document.getElementById('raschet').setAttribute('data-v-span', '1.3');
-  }
-  Vibe.mount(document.querySelector('.v-page'));
-
-  // Фирменный ход: страница и есть акт приёмки. Пока листаешь зоны, строки получают галочки,
-  // счётчик в шапке растёт, линия заполняется. Порог строки считается от --v-p её зоны (акт flow):
-  // p = (y + vh - top) / (h + vh), строка «проверена», когда её верх прошёл 62% высоты экрана,
-  // то есть p >= (смещение строки + 0,38·vh) / (h + vh). Вверх - галочки снимаются: это проверка, а не появление.
-  (function () {
-    var bar = document.getElementById('bar'), cnt = document.getElementById('cnt');
-    var zones = Array.prototype.slice.call(document.querySelectorAll('.zone'));
-    var total = 0;
-    zones.forEach(function (z) {
-      z.__rows = Array.prototype.slice.call(z.querySelectorAll('.chk__row'));
-      z.__rows.forEach(function (r) { r.__t = 2; r.__on = false; });
-      total += z.__rows.length;
-    });
-    Array.prototype.forEach.call(document.querySelectorAll('[data-total]'), function (e) { e.textContent = total; });
-    var last = -1, raf = null;
-    function measure() {
-      var vh = window.innerHeight, y = window.scrollY;
-      zones.forEach(function (z) {
-        var zr = z.getBoundingClientRect(), h = zr.height, zt = zr.top + y;
-        z.__rows.forEach(function (r) {
-          var o = r.getBoundingClientRect().top + y - zt;
-          r.__t = (o + 0.38 * vh) / (h + vh);
-        });
-      });
-      tick();
-    }
-    function tick() {
-      raf = null;
-      var n = 0;
-      zones.forEach(function (z) {
-        var p = parseFloat(getComputedStyle(z).getPropertyValue('--v-p')) || 0;
-        z.__rows.forEach(function (r) {
-          var on = p >= r.__t;
-          if (on !== r.__on) { r.__on = on; r.classList.toggle('is-on', on); }
-          if (on) n++;
-        });
-      });
-      if (n !== last) {
-        last = n;
-        cnt.textContent = n;
-        bar.style.setProperty('--n', (n / total).toFixed(4));
-        bar.classList.toggle('is-done', n === total);
-      }
-    }
-    var ask = function () { if (!raf) raf = requestAnimationFrame(tick); };
-    window.addEventListener('scroll', ask, { passive: true });
-    window.addEventListener('resize', function () { clearTimeout(measure._t); measure._t = setTimeout(measure, 150); });
-    window.addEventListener('load', measure);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
-    measure();
-  })();
-</script>
-<script>const area=document.getElementById('area'),kind=document.getElementById('kind'),out=document.getElementById('estimate'),err=document.getElementById('area-error');function estimate(){const n=area.valueAsNumber;const valid=Number.isFinite(n)&&n>=10&&n<=500;area.setAttribute('aria-invalid',String(!valid));err.textContent=valid?'':'Введите площадь от 10 до 500 м²';if(!valid){out.textContent='Уточните площадь';return}const [rate,min]=kind.value.split(',').map(Number);out.textContent='от '+Math.max(min,n*rate).toLocaleString('ru-RU')+' ₽'}area.addEventListener('input',estimate);kind.addEventListener('change',estimate);estimate();document.querySelectorAll('.chk__cells').forEach(e=>e.setAttribute('aria-label',Array.from(e.children).map((x,i)=>['Поддерживающая','Генеральная','После ремонта'][i]+': '+(x.classList.contains('y')?'входит':'не входит')).join('; ')));document.querySelector('.bar__act').removeAttribute('aria-live');</script></body>
-</html>
+  </footer><script>
+const area=document.getElementById('area'),kind=document.getElementById('kind'),out=document.getElementById('estimate'),err=document.getElementById('area-error'),prepare=document.getElementById('prepare-request'),panel=document.getElementById('request-panel'),requestText=document.getElementById('request-text'),copyStatus=document.getElementById('copy-status');
+function estimate(){const n=area.valueAsNumber;const valid=Number.isFinite(n)&&n>=10&&n<=500;area.setAttribute('aria-invalid',String(!valid));err.textContent=valid?'':'Введите площадь от 10 до 500 м²';prepare.disabled=!valid;if(!valid){out.textContent='Уточните площадь';if(!panel.hidden){requestText.value='Уточните площадь для подготовки запроса.';document.getElementById('copy-request').disabled=true;}return;}document.getElementById('copy-request').disabled=false;const [rate,min]=kind.value.split(',').map(Number);const sum=Math.max(min,n*rate);out.textContent='от '+sum.toLocaleString('ru-RU')+' ₽';requestText.value='Здравствуйте! Хочу уточнить стоимость и свободную дату уборки квартиры в Геленджике.\nПлощадь: '+n+' м².\nВид уборки: '+kind.options[kind.selectedIndex].text+'.\nУчебный предварительный расчёт: '+out.textContent+'.\nУдобная дата: [укажите дату].\nПожалуйста, уточните итоговую цену, состав работ и длительность уборки.';copyStatus.textContent='';}
+area.addEventListener('input',estimate);kind.addEventListener('change',estimate);estimate();
+document.querySelectorAll('[data-kind]').forEach(a=>a.addEventListener('click',()=>{kind.value=a.dataset.kind;estimate();}));
+prepare.addEventListener('click',()=>{panel.hidden=false;prepare.setAttribute('aria-expanded','true');requestText.focus();});
+document.getElementById('copy-request').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(requestText.value);copyStatus.textContent='Текст скопирован. Добавьте удобную дату перед отправкой.';}catch{requestText.focus();requestText.select();copyStatus.textContent='Текст выделен. Скопируйте его вручную: Ctrl+C или через меню телефона.';}});
+document.querySelectorAll('.chk__cells').forEach(e=>{e.setAttribute('role','img');e.setAttribute('aria-label',Array.from(e.children).map((x,i)=>['Поддерживающая','Генеральная','После ремонта'][i]+': '+(x.classList.contains('y')?'входит':'не входит')).join('; '));Array.from(e.children).forEach(x=>x.setAttribute('aria-hidden','true'));});
+</script></body></html>
