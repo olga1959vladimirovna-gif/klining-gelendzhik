@@ -281,15 +281,28 @@ html{scrollbar-gutter:stable;scrollbar-color:#155b83 #eef4f8;scroll-behavior:smo
   .brigada__copy p { color: var(--v-ink-soft); margin-bottom: 18px; max-width: 48ch; }
   .brigada__copy .v-btn { margin-top: 10px; }
   @media (max-width: 860px) { .brigada__grid { grid-template-columns: 1fr; } .brigada__photo { max-width: 560px; } }
+  .bar__mark .tick { flex-shrink: 0; }
+  .bar__label { white-space: nowrap; }
+  @media (max-width: 1100px) {
+    .bar { grid-template-columns: minmax(0, 1fr) auto; gap: 8px 16px; }
+    .bar__mark { grid-column: 1 / -1; white-space: normal; font-size: 16px; }
+    .bar__mark span { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
+    .bar__act { grid-column: 1; width: 100%; min-width: 0; justify-self: stretch; gap: 6px; }
+    .bar__label { display: inline; white-space: normal; font-size: 13px; }
+    .bar > .v-btn { grid-column: 2; font-size: 13px; padding: .65em .8em; }
+    .bar__count { font-size: 13px; }
+    .image-credit { top: 190px; }
+    section { scroll-margin-top: 195px; }
+  }
 </style>
 </head>
 <body>
 <div class="v-page">
 
   <header class="bar" id="bar">
-    <a class="bar__mark" href="#hero"><i class="tick" aria-hidden="true"></i><span>По пунктам</span></a>
+    <a class="bar__mark" href="#hero"><i class="tick" aria-hidden="true"></i><span>Уборка квартир в Геленджике</span></a>
     <div class="bar__act" aria-live="polite" aria-atomic="true">
-      <span class="bar__label">Акт приёмки</span>
+      <span class="bar__label">Акт приёмки по списку</span>
       <span class="bar__count"><b id="cnt">0</b> / <span data-total>36</span></span>
       <span class="bar__line" aria-hidden="true"><b></b></span>
       <span class="bar__done">принято</span>
